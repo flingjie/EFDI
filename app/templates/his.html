@@ -1,0 +1,51 @@
+<div class="home">
+	<div class="head">
+		<div class="headCenter" >
+			<div class="logo">
+				<img src="img/logo2.jpg" ng-click="back()">
+			</div>
+			<div class="title">
+				<p ng-click="back()">
+					<span>EFDI</span>
+					<span>以太航保</span>
+				</p>
+				<p class="subtitle">Ethereum Flight Delay Insurance</p>
+			</div>
+		</div>
+	</div>
+	<div class="section">
+		<div class="searchBox" ng-show="isAll">
+			<input id="searchDate" type="date" name="" ng-model="dateValue" max="{{todayDate}}" ng-change="getHistory()">
+			<div class="btn" ng-click="getHistory()">Search</div>
+		</div>
+		<div class="hisList">
+			<li class="listTitle">
+				<span>Date</span>
+				<span>Flight</span>
+				<span>Scheduled Arrival</span>
+				<span>Actual Arrival</span>
+				<span>ETH Address</span>
+				<span>Insure Amount</span>
+				<span>Claim Amount</span>
+			</li>
+			<li ng-repeat="data in datas" >
+				<span>{{data.date}}</span>
+				<span>{{data.flightNo}}</span>
+				<span>{{data.planATime.slice(11,16)}}</span>
+				<span ng-show="data.expATime">{{data.expATime.slice(11,16)}}</span>
+				<span ng-show="!data.expATime">Pending</span>
+				<span>{{data.eth_address.slice(0,5)+'*****'+data.eth_address.slice(-6,-1)}}</span>
+				<span>{{data.insurance_amount}}ETH</span>
+				<span ng-show="data.is_arrive">{{data.fan_amount?data.fan_amount:'0'}}ETH</span>
+				
+				<span ng-show="!data.is_arrive">{{'Pending'}}</span>
+			</li>
+		</div>
+
+		<div class="buttons one">
+				<span ng-click="back()" class="btn">
+					继续投保
+				</span>
+		</div>
+	</div>
+</div>

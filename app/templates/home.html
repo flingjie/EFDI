@@ -1,0 +1,64 @@
+<div class="home">
+	<div class="head">
+		<div class="headCenter">
+			<div class="logo">
+				<img src="img/logo2.jpg" ng-click="back()">
+			</div>
+			<div class="title">
+				<p>
+					<span>EFDI</span>
+					<span>以太航保</span>
+				</p>
+				<p class="subtitle">Ethereum Flight Delay Insurance</p>
+			</div>
+		</div>
+	</div>
+	<div class="section">
+		<div class="form">
+			<input min="{{minDate}}" type="text" onfocus="(this.type='date')" 
+			name=""  ng-model="order.date" ng-change="dateChanged()" placeholder="Date of the flight arrival">
+			<input type="text" name="" placeholder="Flight number" ng-model="order.flight_no">
+			<div style="position: relative;">
+				<input class="amount" type="number" name="" placeholder="Insurance amount" ng-model="order.insurance_amount">
+				<span style="    
+				position: absolute;
+				right: 0;
+				top: 0;
+				color: #666;
+				line-height: 34px;
+				padding-right: 5px;">ETH</span>
+			</div>
+			<div class="addEth">
+				<span class="btn" ng-click="addEth(0.01)">+0.01 ETH</span>
+				<span class="btn" ng-click="addEth(0.1)">+0.1 ETH</span>
+				<span class="btn" ng-click="addEth(1)">+1 ETH</span>
+			</div>
+			<div class="summitArea">
+				<div class="summitBtn btn" ng-click="summit()">{{summitBtn.words}}</div>
+				<p style="font-size: 14px;color:#999;margin-top: 5px;">Please use Metamask in Chrome or Firefox</p>
+			</div>
+			<div class="buttons">
+					<span class="btn" ng-click="checkHis('all')">History Insurance</span>
+					<span class="btn" ng-click="checkHis('my')" >My Insurance</span>
+			</div>
+		</div>
+
+		<div class="info">
+			* 可投保日期：{{minDate}}及之后，以航班预定降落时间为准<br>
+			* 请准确输入航班号，如输入错误投保金额扣除gas费用后原路退回<br>
+			* 投保金额最低0.01 ETH，gas费用自付<br>
+			* 每日累计投保金额分配给投保的延误用户，按照投保金额比例分配<br>
+			* 每日理赔完成后，保额归0，本DAPP不收取任何手续费，不截留任何资金<br>
+			* 延误标准：降落比预定时间晚60分钟（含）以上（含备降、取消）<br>
+			* 如当日没有任何飞机延误，则投保金额扣除gas费用原路退回<br>
+			* 合约开源：http://github.com/...........<br>
+			* 理赔数据依赖：航旅纵横 or 非常准<br>
+		</div>
+
+
+	</div>
+</div>
+<div class="alertInfo" ng-show="alertInfo">
+	<p>未检测到您的浏览器安装metamask插件，请在chrome下使用metamask插件登录，下载链接:<a target="_blank" href="https://metamask.io/" style="color:#fff">https://metamask.io/</a></p>
+	
+</div>
